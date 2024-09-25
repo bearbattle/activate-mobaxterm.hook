@@ -21,10 +21,13 @@ if (!$pp['UserName']) { $pp['UserName'] = $Env:UserName }
 [string]$mobaVersion
 [string]$mobaInstLocation
 try {
-    $mobaVersion = (choco list -r -e mobaxterm).Split('|')[1]
-    $mobaLog = "$env:TEMP\$packageName.$mobaVersion.MsiInstall.log"
-    $matchResult = Get-Content $mobaLog | Select-String -Pattern "MobaXtermFolder = (.*)"
+    $mobaLogs = Get-ChildItem -Path "$env:TEMP\$packageName.*.MsiInstall.log" -Name 
+    $mobaVersion = $mobaLogs | ForEach-Object { $_ -replace "($packageName\.|\.MsiInstall\.log)", ""} | Sort-Object { $_ -as [Version]} | Select-Object -Last 1
+    $latMobaLog = "$env:TEMP\$packageName.$mobaVersion.MsiInstall.log"
+    Write-Debug "- Find Latest Package Install Log: $latMobaLog"
+    $matchResult = Get-Content $latMobaLog | Select-String -Pattern "MobaXtermFolder = (.*)"
     $mobaInstLocation = $matchResult.Matches[0].Groups[1].Value
+    Write-Debug "- Find Installation Directory: $mobaInstLocation"
 }
 catch {
     $_

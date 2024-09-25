@@ -27,7 +27,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
     <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
     <version>0.1.0</version>
-    <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
+    <packageSourceUrl>https://github.com/bearbattle/activate-mobaxterm.hook</packageSourceUrl>
     <!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
     <owners>Bear</owners>
     <!-- ============================== -->
@@ -52,17 +52,17 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <tags>hook package</tags>
     <summary>A hook package that use python script to activate MobaXterm.</summary>
     <description>
-      This hook package is designed to automatically activate MobaXterm after its installation.
+This hook package is designed to automatically activate MobaXterm after its installation.
 
-      #### Package Parameters
+#### Package Parameters
 
-      The following package parameters can be set:
+The following package parameters can be set:
 
-      * `/UserName:` - Name licensed to, appears on liscense info (default: Current Windows Username `$Env:UserName`)
+* `/UserName:` - Name licensed to, appears on liscense info (default: Current Windows Username `$Env:UserName`)
 
-      Thanks to https://github.com/flygon2018/MobaXterm-keygen .
+Thanks to https://github.com/flygon2018/MobaXterm-keygen .
 
-      This software is published under GPL-3.0 License
+This software is published under GPL-3.0 License
     </description>
     <releaseNotes>https://github.com/bearbattle/activate-mobaxterm.hook/releases/latest</releaseNotes>
     <!-- =============================== -->
@@ -70,7 +70,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
     <dependencies>
       <dependency id="chocolatey-core.extension" version="1.1.0" />
-      <dependency id="mobaxterm" />
+      <dependency id="chocolatey" version="1.2.0" />
     </dependencies>
     <!-- chocolatey-core.extension - https://community.chocolatey.org/packages/chocolatey-core.extension -->
 
